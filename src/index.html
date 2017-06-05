@@ -2,12 +2,65 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <title>Trouser Snake</title>
+    <style>
+        html,body {
+            padding: 0;
+            height: 100vh;
+            width: 100vw;
+            margin: auto;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: #eee;
+        }
+
+        .game-wrap {
+            margin: auto;
+        }
+
+        .game {
+            margin: auto;
+        }
+
+        .score-panel {
+            width: 100%;
+            margin-top: 5px;
+            height: 75px;
+            display:flex;
+            align-items: center;
+        }
+
+        .score {
+            width: 220px;
+            padding: 15px;
+            font-family: "Arial Black";
+            font-weight: 900;
+
+            display:flex;
+            align-items: center;
+            flex-direction: column;
+        }
+    </style>
 </head>
 
 <body>
 
-<div class="game">
+<div class="game-wrap">
+    <div class="score-panel">
+        <div class="score">
+            <span class="score-text">Score:</span>
+            <span class="score-points">0</span>
+        </div>
+        <div class="score">
+            <span class="score-text">Highscore:</span>
+            <span class="high-score-points">0</span>
+        </div>
+    </div>
+
+    <div class="game">
+
+    </div>
 
 </div>
 
