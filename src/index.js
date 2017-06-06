@@ -188,7 +188,7 @@ class Game {
         }, 0);
         if (this.score > highest) {
             document.querySelector('.high-score-points').innerHTML = this.score;
-            this.highscores.push({ score: this.score });
+            this.highscores.push({score: this.score});
         }
     }
 
@@ -205,14 +205,53 @@ class Game {
 
     drawPlayer() {
         const ctx = this.getContext();
-        ctx.fillStyle = '#000000';
+
         const playerBits = this.drawable.player.eaten + 1;
         for (let v = 0; v < playerBits; v++) {
+
             let move = this.drawable.player.moves[v];
+            ctx.fillStyle = '#000000';
             ctx.fillRect(move.x * this.density, move.y * this.density, this.density, this.density); // density = 10 ie.
+
+            if (v === 0) {
+                this.drawHead(move);
+            }
         }
     }
 
+    drawHead(move) {
+        const ctx = this.getContext();
+        const peeHoleLength = this.density / 2;
+        const peeHoleWidth = 2;
+        let x = move.x * this.density, y = move.y * this.density, h, w;
+        if (this.direction === 0) {
+            x += this.density / 2;
+            y += 0;
+            h = peeHoleWidth;
+            w = peeHoleLength;
+        } else if (this.direction === 1) {
+            x += this.density / 2;
+            y += this.density - peeHoleLength;
+            h = peeHoleLength;
+            w = peeHoleWidth;
+
+        } else if (this.direction === 2) {
+
+            x += this.density - peeHoleLength;
+            y += this.density / 2;
+            h = peeHoleWidth;
+            w = peeHoleLength;
+
+        } else if (this.direction === 3) {
+            x += 0;
+            y += this.density / 2;
+            h = peeHoleLength;
+            w = peeHoleWidth;
+        }
+        ctx.fillStyle = '#ff9922';
+        ctx.fillRect(x, y, h, w);
+
+    }
 
     getContext() {
         if (!this.ctx) {
